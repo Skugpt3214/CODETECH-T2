@@ -1,0 +1,11 @@
+NAME Sourav kumar
+
+COMPANY CODETECH IT SOLUTIONS 
+
+ID CT04PP2175 
+
+Duration June 2024 to July 2024 
+
+Mentor Sravani Gouni
+
+OVERVIEW OF THE PROJECT
