@@ -1,0 +1,63 @@
+def calculate_average(grades):
+    if not grades:
+        return 0
+    return sum(grades) / len(grades)
+
+def calculate_letter_grade(average_grade):
+    if average_grade >= 90:
+        return 'A'
+    elif average_grade >= 80:
+        return 'B'
+    elif average_grade >= 70:
+        return 'C'
+    elif average_grade >= 60:
+        return 'D'
+    else:
+        return 'F'
+
+def student_grade_tracker():
+    print("Welcome to the Student Grade Tracker!")
+    print("Enter 'q' to finish entering grades for a subject.")
+
+    subjects = {}
+    while True:
+        subject_name = input("\nEnter the name of the subject (or 'q' to quit): ")
+        if subject_name.lower() == 'q':
+            break
+        
+        grades = []
+        while True:
+            grade_input = input(f"Enter grade for {subject_name} (or 'q' to finish): ")
+            if grade_input.lower() == 'q':
+                break
+            try:
+                grade = float(grade_input)
+                if 0 <= grade <= 100:
+                    grades.append(grade)
+                else:
+                    print("Grade must be between 0 and 100.")
+            except ValueError:
+                print("Invalid input. Please enter a number.")
+        
+        subjects[subject_name] = grades
+    
+    if not subjects:
+        print("No grades entered. Exiting program.")
+        return
+    
+    print("\nSubject Grades Summary:")
+    for subject, grades in subjects.items():
+        average_grade = calculate_average(grades)
+        letter_grade = calculate_letter_grade(average_grade)
+        print(f"{subject}: Grades {grades}, Average Grade: {average_grade:.2f}, Letter Grade: {letter_grade}")
+
+    overall_grades = [grade for grades in subjects.values() for grade in grades]
+    overall_average = calculate_average(overall_grades)
+    overall_letter_grade = calculate_letter_grade(overall_average)
+    
+    print("\nOverall Grades Summary:")
+    print(f"Overall Grades: {overall_grades}")
+    print(f"Overall Average Grade: {overall_average:.2f}")
+    print(f"Overall Letter Grade: {overall_letter_grade}")
+
+student_grade_tracker()
